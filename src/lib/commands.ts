@@ -99,7 +99,7 @@ export const COMMANDS: Command[] = [
   {
     id: "jellyfin",
     name: "Jellyfin",
-    url: "https://jfa.foxlust.my.id",
+    url: "https://jf.foxlust.my.id",
     category: "media",
     description: "Media server",
     keywords: ["media", "movies", "tv"],
