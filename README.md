@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neon Startpage
 
-## Getting Started
+## Overview
+Neon is a modern, minimalist browser startpage designed for power users who want quick access to their most-used web services and efficient web searching. It replaces your browser's default new tab page with a clean, customizable interface that prioritizes speed and productivity.
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### **Instant Command Navigation**
+- **Quick Aliases**: Type short commands to instantly navigate to services
+  - `g` → GitHub, `c` → ChatGPT, `gh` → GitHub, `ai` → ChatGPT
+  - `yt` → YouTube, `rd` → Reddit, `dl` → DeepL, etc.
+- **Smart Search Integration**: Commands with search terms (e.g., "youtube cats")
+- **Category Organization**: Commands grouped into logical categories (AI, Development, Media, Tools, Services)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔍 **Advanced Search System**
+- **Transparent Modal**: Beautiful glass-morphism search interface
+- **Dual Search Engine**: 
+  - **Brave Search** as default for privacy-focused results
+  - **DuckDuckGo** for instant autocomplete suggestions
+- **Smart Autocomplete**: Shows both command aliases and search suggestions
+- **Keyboard Optimized**: Arrow key navigation, Tab completion, Enter to execute
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Modern Design**
+- **Glass Morphism**: Translucent cards with backdrop blur effects
+- **Gradient Backgrounds**: Subtle gradients for depth and visual appeal
+- **Responsive Layout**: Adapts to any screen size from mobile to desktop
+- **Smooth Animations**: Hover effects and transitions for polished experience
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **Theme System**
+- **Dark/Light Mode**: Toggle between themes with persistent preference
+- **System Integration**: Automatically detects system theme preference
+- **Smooth Transitions**: All theme changes are animated
 
-## Learn More
+### ⌨️ **Keyboard-First Workflow**
+- **Any Key to Search**: Press any letter to instantly open search
+- **Fast Typing Support**: Optimized for rapid keyboard input
+- **Escape to Close**: Quick dismissal with Escape key
+- **Click Anywhere**: Click empty space to open search modal
 
-To learn more about Next.js, take a look at the following resources:
+## Technical Stack
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS v4 with custom CSS variables
+- **UI Components**: shadcn/ui for consistent components
+- **TypeScript**: Full type safety throughout the application
+- **State Management**: React hooks with custom theme context
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Architecture
+- **Component-Based**: Modular React components (Search, Commands, ThemeToggle)
+- **Configuration-Driven**: Commands and settings in centralized config files
+- **JSONP Integration**: CORS-free autocomplete using DuckDuckGo's JSONP API
+- **Performance Optimized**: Fast loading with optimized builds
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Use Cases
+- **Developers**: Quick access to GitHub, documentation, and development tools
+- **Researchers**: Fast searching across multiple services
+- **Power Users**: Keyboard-driven workflow for maximum efficiency
+- **Privacy-Conscious Users**: Brave Search as default for private browsing
 
-## Deploy on Vercel
+## Unique Selling Points
+1. **Speed**: Instant navigation with command aliases
+2. **Privacy**: Brave Search as default engine
+3. **Elegance**: Beautiful glass-morphism design
+4. **Efficiency**: Keyboard-first workflow optimized for power users
+5. **Customizability**: Easy to add new commands and services
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Neon transforms your browsing experience from a blank tab into a powerful productivity hub that gets you where you need to go faster than ever before.
