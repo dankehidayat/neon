@@ -32,15 +32,15 @@ export default function Commands({ onCommandClick }: CommandsProps) {
                   onCommandClick(command.url);
                 }}
               >
-                <div className="p-5 flex flex-col gap-2 h-full">
+                <div className="p-5 flex flex-col gap-2 h-full command-text">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-inter">
+                    <span className="font-semibold text-primary text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-duospace">
                       {command.name}
                     </span>
                     <div className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                   {command.description && (
-                    <span className="text-xs text-slate-700 dark:text-gray-400 text-left leading-relaxed font-inter">
+                    <span className="text-xs text-muted text-left leading-relaxed font-duospace">
                       {command.description}
                     </span>
                   )}
@@ -49,7 +49,7 @@ export default function Commands({ onCommandClick }: CommandsProps) {
                       {command.aliases.slice(0, 2).map((alias) => (
                         <span
                           key={alias}
-                          className="px-2 py-1 text-xs bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-gray-400 rounded-md font-mono shadow-sm"
+                          className="px-2 py-1 text-xs bg-card text-muted rounded-md font-duospace shadow-sm"
                         >
                           {alias}
                         </span>

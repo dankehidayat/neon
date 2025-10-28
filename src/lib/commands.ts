@@ -97,6 +97,16 @@ export const COMMANDS: Command[] = [
 
   // Media & Entertainment
   {
+    id: "youtube",
+    name: "YouTube",
+    url: "https://www.youtube.com",
+    category: "media",
+    description: "YouTube video search",
+    searchTemplate: "https://www.youtube.com/results?search_query={}",
+    keywords: ["video", "youtube"],
+    aliases: ["yt"],
+  },
+  {
     id: "jellyfin",
     name: "Jellyfin",
     url: "https://jf.foxlust.my.id",
@@ -120,9 +130,9 @@ export const COMMANDS: Command[] = [
     url: "https://music.youtube.com",
     category: "media",
     description: "YouTube Music",
-    searchTemplate: "/search?q={}",
+    searchTemplate: "https://music.youtube.com/search?q={}",
     keywords: ["music", "songs"],
-    aliases: ["ytm", "music"],
+    aliases: ["ytm"],
   },
   {
     id: "hianime",
@@ -130,7 +140,7 @@ export const COMMANDS: Command[] = [
     url: "https://hianime.to",
     category: "media",
     description: "Anime streaming",
-    searchTemplate: "/search?keyword={}",
+    searchTemplate: "https://hianime.to/search?keyword={}",
     keywords: ["anime", "watch"],
     aliases: ["ha", "anime"],
   },
@@ -140,6 +150,7 @@ export const COMMANDS: Command[] = [
     url: "https://nyaa.si",
     category: "media",
     description: "Anime torrents",
+    searchTemplate: "https://nyaa.si/?f=0&c=0_0&q={}",
     keywords: ["torrent", "anime"],
     aliases: ["ny", "torrent"],
   },
@@ -151,6 +162,25 @@ export const COMMANDS: Command[] = [
     description: "Bluesky social",
     keywords: ["social", "twitter"],
     aliases: ["bs", "sky"],
+  },
+  {
+    id: "reddit",
+    name: "Reddit",
+    url: "https://reddit.com",
+    category: "media",
+    description: "Reddit social & subreddits",
+    searchTemplate: "https://www.reddit.com/search/?q={}",
+    keywords: ["social", "forum", "subreddit"],
+    aliases: ["rd", "r"],
+  },
+  {
+    id: "4chan",
+    name: "4chan",
+    url: "https://boards.4chan.org",
+    category: "media",
+    description: "4chan imageboard",
+    keywords: ["imageboard", "anonymous", "boards"],
+    aliases: ["4c", "chan"],
   },
 
   // Tools & Utilities
@@ -173,24 +203,14 @@ export const COMMANDS: Command[] = [
     aliases: ["gt", "gtranslate"],
   },
   {
-    id: "reddit",
-    name: "Reddit",
-    url: "https://reddit.com",
-    category: "tools",
-    description: "Social discussion",
-    searchTemplate: "/search/?q={}",
-    keywords: ["social", "forum"],
-    aliases: ["rd", "r"],
-  },
-  {
     id: "duckduckgo",
     name: "DuckDuckGo",
     url: "https://duckduckgo.com",
     category: "tools",
     description: "Private search",
-    searchTemplate: "/?q={}",
+    searchTemplate: "https://duckduckgo.com/?q={}",
     keywords: ["search", "private"],
-    aliases: ["ddg", "search"],
+    aliases: ["ddg"],
   },
   {
     id: "gmail",
@@ -240,6 +260,95 @@ export const CATEGORIES = {
   services: { name: "Services" },
 };
 
+// 4chan boards mapping
+export const FOURCHAN_BOARDS: Record<string, string> = {
+  // Traditional boards
+  a: "a",
+  b: "b",
+  c: "c",
+  d: "d",
+  e: "e",
+  f: "f",
+  g: "g",
+  gif: "gif",
+  h: "h",
+  hr: "hr",
+  k: "k",
+  m: "m",
+  o: "o",
+  p: "p",
+  r: "r",
+  s: "s",
+  t: "t",
+  u: "u",
+  v: "v",
+  vg: "vg",
+  vm: "vm",
+  vmg: "vmg",
+  vr: "vr",
+  vrpg: "vrpg",
+  vst: "vst",
+  w: "w",
+  wg: "wg",
+
+  // International boards
+  i: "i",
+  ic: "ic",
+
+  // Other boards
+  r9k: "r9k",
+  s4s: "s4s",
+  vip: "vip",
+
+  // Misc boards
+  cm: "cm",
+  hm: "hm",
+  lgbt: "lgbt",
+  y: "y",
+
+  // Additional boards
+  "3": "3",
+  aco: "aco",
+  adv: "adv",
+  an: "an",
+  bant: "bant",
+  biz: "biz",
+  cgl: "cgl",
+  ck: "ck",
+  co: "co",
+  diy: "diy",
+  fa: "fa",
+  fit: "fit",
+  gd: "gd",
+  hc: "hc",
+  his: "his",
+  int: "int",
+  jp: "jp",
+  lit: "lit",
+  mlp: "mlp",
+  mu: "mu",
+  n: "n",
+  news: "news",
+  out: "out",
+  po: "po",
+  pol: "pol",
+  pw: "pw",
+  qst: "qst",
+  sci: "sci",
+  soc: "soc",
+  sp: "sp",
+  tg: "tg",
+  toy: "toy",
+  trv: "trv",
+  tv: "tv",
+  vp: "vp",
+  vt: "vt",
+  wsg: "wsg",
+  wsr: "wsr",
+  x: "x",
+  xs: "xs",
+};
+
 // Create a map for quick alias lookup
 export const ALIAS_MAP: Record<string, string> = {};
 
@@ -256,7 +365,7 @@ COMMANDS.forEach((command) => {
 export const CONFIG = {
   commandPathDelimiter: "/",
   commandSearchDelimiter: " ",
-  defaultSearchTemplate: "https://search.brave.com/search?q={}", // Changed to Brave
+  defaultSearchTemplate: "https://search.brave.com/search?q={}",
   openLinksInNewTab: true,
   suggestionLimit: 4,
 };

@@ -5,18 +5,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function escapeRegexCharacters(s: string): string {
-  return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
-}
-
-export function hasProtocol(s: string): boolean {
-  return /^[a-zA-Z]+:\/\//i.test(s);
-}
-
-export function isUrl(s: string): boolean {
-  return /^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)$/i.test(s);
+export function escapeRegexCharacters(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 export function formatSearchUrl(template: string, search: string): string {
-  return template.replace(/{}/g, encodeURIComponent(search));
+  const encodedSearch = encodeURIComponent(search);
+  return template.replace(/{}/g, encodedSearch);
+}
+
+export function hasProtocol(s: string): boolean {
+  return /^[a-zA-Z]+:\/\//.test(s);
+}
+
+export function isUrl(s: string): boolean {
+  const urlPattern = /^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)$/i;
+  return urlPattern.test(s);
 }

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
-
+@import url("https://cdn.jsdelivr.net/npm/ia-writer-duospace@1.0.0/fonts/iAWriterDuospace.css");
 @import "tailwindcss";
 
 @layer base {
@@ -11,6 +11,13 @@
     --border: 214 32% 91%;
     --accent: 210 40% 96%;
     --accent-foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --gradient-from: #dbeafe;
+    --gradient-via: #ffffff;
+    --gradient-to: #f3e8ff;
+    --search-bg: 0 0% 100%;
+    --search-foreground: 222 47% 11%;
   }
 
   .dark {
@@ -21,6 +28,13 @@
     --border: 217 33% 17%;
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --gradient-from: #1e293b;
+    --gradient-via: #0f172a;
+    --gradient-to: #1e1b4b;
+    --search-bg: 217 33% 17%;
+    --search-foreground: 210 40% 98%;
   }
 }
 
@@ -31,28 +45,26 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-family: "iA Writer Duospace", monospace;
     transition: all 0.3s ease;
   }
 }
 
-/* Ensure text colors are properly set for light mode */
-.text-slate-900 {
-  color: #1e293b;
+.category-title {
+  font-family: "Inter", sans-serif;
 }
 
-.text-slate-700 {
-  color: #334155;
+/* Background gradient using CSS variables */
+.bg-gradient-custom {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gradient-from)) 0%,
+    hsl(var(--gradient-via)) 50%,
+    hsl(var(--gradient-to)) 100%
+  );
 }
 
-.bg-slate-200 {
-  background-color: #e2e8f0;
-}
-
-.text-slate-700 {
-  color: #334155;
-}
-
+/* Glass morphism styles */
 .glass {
   backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(255, 255, 255, 0.75);
@@ -119,10 +131,13 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Search modal drop shadow */
+/* Search modal styles using CSS variables */
 .search-modal {
+  background-color: hsl(var(--search-bg)) !important;
+  color: hsl(var(--search-foreground)) !important;
   box-shadow: 0 50px 100px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid hsl(var(--border));
 }
 
 .dark .search-modal {
@@ -134,6 +149,9 @@
 .suggestion-item {
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border: 1px solid hsl(var(--border));
 }
 
 .dark .suggestion-item {
@@ -143,8 +161,252 @@
 .suggestion-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
 
 .dark .suggestion-item:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Focused suggestion */
+.suggestion-item-focused {
+  background-color: hsl(217.2 91.2% 59.8%) !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+/* Font classes for consistent typography */
+.font-duospace {
+  font-family: "iA Writer Duospace", monospace;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+/* Help modal card styles */
+.help-modal-card {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 250, 252, 0.9) 50%,
+    rgba(241, 245, 249, 0.85) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 15px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  color: hsl(var(--foreground));
+}
+
+.dark .help-modal-card {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.95) 0%,
+    rgba(15, 23, 42, 0.9) 50%,
+    rgba(30, 41, 59, 0.85) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 15px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  color: hsl(var(--foreground));
+}
+
+/* Code block styles in help modal */
+code,
+kbd {
+  font-family: "iA Writer Duospace", monospace;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Custom scrollbar for help modal */
+.help-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.help-modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.dark .help-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.help-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dark .help-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.help-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark .help-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Remove focus outline for search input */
+.search-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible {
+  outline: 2px solid hsl(217.2 91.2% 59.8%);
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+/* Info icon hover animation */
+.info-icon {
+  transition: all 0.3s ease;
+}
+
+.info-icon:hover {
+  transform: scale(1.1);
+  color: hsl(217.2 91.2% 59.8%);
+}
+
+/* Theme toggle button with glass morphism */
+.theme-toggle {
+  backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .theme-toggle {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dark .theme-toggle:hover {
+  background: rgba(30, 41, 59, 0.9);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Backdrop blur fallback for older browsers */
+@supports not (backdrop-filter: blur(16px)) {
+  .glass,
+  .command-card,
+  .search-modal,
+  .help-modal-card,
+  .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .dark .glass,
+  .dark .command-card,
+  .dark .search-modal,
+  .dark .help-modal-card,
+  .dark .theme-toggle {
+    background-color: rgba(17, 25, 40, 0.9);
+  }
+}
+
+/* Print styles */
+@media print {
+  .command-card,
+  .search-modal,
+  .help-modal-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .category-title {
+    background: black !important;
+    -webkit-text-fill-color: black !important;
+    text-shadow: none !important;
+  }
+}
+
+/* Info icon animation */
+.info-icon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-icon:hover {
+  transform: scale(1.1);
+  color: hsl(217.2 91.2% 59.8%);
+}
+
+/* Smooth help modal animations */
+.help-modal-content {
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Command card text animation */
+.command-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.command-card:hover .command-text {
+  transform: translateY(-1px);
+}
+
+.command-text {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text color utilities using CSS variables */
+.text-primary {
+  color: hsl(var(--foreground));
+}
+
+.text-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.bg-card {
+  background-color: hsl(var(--card));
+}
+
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+
+/* Search input placeholder color */
+.search-input::placeholder {
+  color: hsl(var(--muted-foreground));
 }
