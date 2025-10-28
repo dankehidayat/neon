@@ -2,7 +2,7 @@
 
 A modern, minimalist browser startpage designed for power users who want quick access to their most-used web services and efficient web searching.
 
-![Neon Startpage](https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Neon+Startpage)
+<img width="1792" height="1131" alt="image" src="https://github.com/user-attachments/assets/5d24d334-ee43-410f-b693-aa5ff00097c5" />
 
 ## ✨ Features
 
